@@ -12,10 +12,11 @@ DIGITE A OPÇÂO DESEJADA :
 [4] Sair
 
 '''
-saldo = 0 
+saldo = 100 
 limite = 500
 extrato = ""
-
+numero_saques = 0
+limite_saque=3
 
 while  True:
 
@@ -31,4 +32,16 @@ while  True:
       else:
           print("Operação falhou! O valor informado é inválido.")
    elif operacao == 2:
+       saque = float(input(f"informe o valor a sacar:"))
+       if(numero_saques <= 3 and saldo > saque and limite > saque): 
+         saldo -= saque
+         limite_saque -= 1
+         extrato += f"Você realizou um saque de R${saque:.2f}"
+         if saldo > 0:
+            print("transação aprovada!")
+         else:
+            print("transação negada!")
+       else:
+            print("Operação falhou! O valor informado é inválido.")      
+   elif operacao == 3:
       
